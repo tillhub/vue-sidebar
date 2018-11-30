@@ -32,14 +32,21 @@ export default {
   methods: {
     /**
      * Updates the padding of the dialog body
-     * @param {string} p - padding value
+     * @param {string} [p] - padding value
      */
     updatePadding (p) {
+      // wrap it in $nextTick as classList of child is not available on mounted() yet
       this.$nextTick(() => {
-        console.log('padding:', p, this.$refs.dialog.childNodes)
-        console.log('childNode[1]:', this.$refs.dialog.childNodes[1])
-        this.$refs.dialog.childNodes[1].style.padding = p
-        console.log('childNode[1]:', this.$refs.dialog.childNodes[1])
+        console.log('padding:', p)
+        // find dialog body and update its padding
+        for (const childNode of this.$refs.dialog.childNodes) {
+          console.log(`padding checking ${childNode}'s classList: ${JSON.stringify(childNode.classList)}`)
+          if (childNode.classList && childNode.classList.contains('el-dialog__body')) {
+            childNode.style.padding = p
+            return
+          }
+        }
+        console.warn('updatePadding: body was not updated! (DOM not ready?)')
       })
     },
     /**
