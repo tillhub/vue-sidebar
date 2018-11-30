@@ -25,7 +25,7 @@ export default {
     }
   },
   mounted () {
-    console.log('REF', this.$refs)
+    // console.log('REF', this.$refs)
 
     // initially call functions that watchers would call
     this.updatePadding(this.padding)
@@ -39,16 +39,16 @@ export default {
     updatePadding (p) {
       // wrap it in $nextTick as classList of child is not available on mounted() yet
       this.$nextTick(() => {
-        console.log('padding:', p)
+        // console.log('padding:', p)
         // find dialog body and update its padding
         for (const childNode of this.$refs.dialog.childNodes) {
-          console.log(`padding checking ${childNode}'s classList: ${JSON.stringify(childNode.classList)}`)
+          // console.log(`padding checking ${childNode}'s classList: ${JSON.stringify(childNode.classList)}`)
           if (childNode.classList && childNode.classList.contains('el-dialog__body')) {
             childNode.style.padding = p
             return
           }
         }
-        console.warn('updatePadding: body was not updated! (DOM not ready?)')
+        // console.warn('updatePadding: body was not updated! (DOM not ready?)')
       })
     },
     /**
@@ -58,11 +58,11 @@ export default {
     setShowTitle (showTitle) {
       // wrap it in $nextTick as classList of child is not available on mounted() yet
       this.$nextTick(() => {
-        console.log('setShowTitle:', showTitle)
+        // console.log('setShowTitle:', showTitle)
 
         // find header and add or remove element hiding class accordingly
         for (const childNode of this.$refs.dialog.childNodes) {
-          console.log('setShowTitle checking child node:', childNode, childNode.classList)
+          // console.log('setShowTitle checking child node:', childNode, childNode.classList)
           if (childNode.classList && childNode.classList.contains('el-dialog__header')) {
             const headerClasses = this.$refs.dialog.childNodes[0].classList
 
@@ -74,7 +74,7 @@ export default {
             return
           }
         }
-        console.warn('setShowTitle: header was not updated! (DOM not ready?)')
+        // console.warn('setShowTitle: header was not updated! (DOM not ready?)')
       })
     }
   },
