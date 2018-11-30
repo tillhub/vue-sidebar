@@ -26,6 +26,8 @@ export default {
   },
   mounted () {
     console.log('REF', this.$refs)
+
+    // initially call functions that watchers would call
     this.updatePadding(this.padding)
     this.setShowTitle(this.showTitle)
   },
@@ -77,8 +79,20 @@ export default {
     }
   },
   watch: {
-    showTitle: (nVal) => this.setShowTitle(nVal),
-    padding: (nVal) => this.updatePadding(nVal)
+    showTitle (nVal) {
+      this.setShowTitle(nVal)
+    },
+    padding (nVal) {
+      this.updatePadding(nVal)
+    },
+    // we have to watch `visible`, as the body is lazy loaded. If the component is initialized with `visible=false`,
+    // the body is not rendered yet, so there is nothing to change the padding of
+    // watching visible ensures setting padding on first render
+    visible (isVisible) {
+      if (isVisible) {
+        this.updatePadding(this.padding)
+      }
+    }
   }
 }
 </script>
