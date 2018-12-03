@@ -52,7 +52,7 @@ import Migrating from 'element-ui/src/mixins/migrating'
 import emitter from 'element-ui/src/mixins/emitter'
 
 export default {
-  name: 'ElSidebar',
+  name: 'ThSidebar',
   mixins: [Popup, emitter, Migrating],
   props: {
     title: {

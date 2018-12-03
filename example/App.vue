@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Main content is here</h1>
     <el-button @click="showSidebar = !showSidebar">toggle sidebar</el-button>
-    <el-sidebar
+    <th-sidebar
       :visible.sync="showSidebar"
       title="Hello, Sidebar"
       :hide-title="true"
@@ -17,16 +17,16 @@
         style="padding: 20px">
         <el-button @click="showSidebar = false">Close</el-button>
       </div>
-    </el-sidebar>
+    </th-sidebar>
   </div>
 </template>
 
 <script>
-import ElSidebar from '../src/index.vue'
+import ThSidebar from '../src/index.vue'
 
 export default {
   components: {
-    ElSidebar
+    ThSidebar
   },
   data () {
     return {
