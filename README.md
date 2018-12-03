@@ -31,4 +31,4 @@ The sidebar is based on ElementUI's original `Dialog` code. All properties/event
 
 ## License
 
-MIT © [Endebert](https://github.com/Endebert)
+MIT © [Tillhub](https://github.com/tillhub)
