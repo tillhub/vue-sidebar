@@ -1,6 +1,6 @@
 {
   "name": "@tillhub/vue-sidebar",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "Sidebar component based on ElementUI's dialog",
   "author": "Robert Ende <robert.ende@tillhub.de>",
   "license": "MIT",
