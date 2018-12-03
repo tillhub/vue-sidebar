@@ -5,14 +5,18 @@
     <el-sidebar
       :visible.sync="showSidebar"
       title="Hello, Sidebar"
-      :show-title="false"
+      :hide-title="true"
+      :show-close="true"
+      position="right"
       padding="16px">
       <div>
         <h2>Sidebar content is here</h2>
       </div>
-      <span slot="footer">
+      <div
+        slot="footer"
+        style="padding: 20px">
         <el-button @click="showSidebar = false">Close</el-button>
-      </span>
+      </div>
     </el-sidebar>
   </div>
 </template>
