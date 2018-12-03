@@ -56,26 +56,11 @@ export default {
      * @param {boolean} showTitle - whether to show the dialog title or not
      */
     setShowTitle (showTitle) {
-      // wrap it in $nextTick as classList of child is not available on mounted() yet
-      this.$nextTick(() => {
-        // console.log('setShowTitle:', showTitle)
-
-        // find header and add or remove element hiding class accordingly
-        for (const childNode of this.$refs.dialog.childNodes) {
-          // console.log('setShowTitle checking child node:', childNode, childNode.classList)
-          if (childNode.classList && childNode.classList.contains('el-dialog__header')) {
-            const headerClasses = this.$refs.dialog.childNodes[0].classList
-
-            if (showTitle) {
-              headerClasses.remove('__hide_header')
-            } else {
-              headerClasses.add('__hide_header')
-            }
-            return
-          }
-        }
-        // console.warn('setShowTitle: header was not updated! (DOM not ready?)')
-      })
+      if (showTitle) {
+        this.$refs.classList.remove('__hide_header')
+      } else {
+        this.$refs.classList.add('__hide_header')
+      }
     }
   },
   watch: {
@@ -109,7 +94,7 @@ export default {
   flex-direction: column;
 }
 
-.__hide_header {
+.__hide_header >>> .el-dialog__header {
   display: none;
 }
 
